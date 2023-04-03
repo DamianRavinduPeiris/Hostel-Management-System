@@ -1,5 +1,6 @@
 package com.damian.hms.util;
 
+import com.damian.hms.entity.LoginDetails;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -9,7 +10,7 @@ public class FactoryConfiguration {
     private static SessionFactory sessionFactory;
 
     private FactoryConfiguration() {
-        Configuration configuration = new Configuration();
+        Configuration configuration = new Configuration().addProperties(PropertyInjector.injectProperties()).addAnnotatedClass(LoginDetails.class);
         sessionFactory = configuration.buildSessionFactory();
     }
 

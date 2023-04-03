@@ -1,5 +1,6 @@
 package com.damian.hms;
 
+import animatefx.animation.LightSpeedIn;
 import com.damian.hms.util.PropertyInjector;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,8 +19,6 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        PropertyInjector.injectProperties();//Injecting properties from hibernate.properties file.
-
         URL resource = AppInitializer.class.getResource("/view/HomeScreen.fxml");
         primaryStage.setScene(new Scene(FXMLLoader.load(resource)));
         primaryStage.setTitle("D24 - Hostel.");
