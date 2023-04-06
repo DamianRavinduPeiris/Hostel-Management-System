@@ -13,6 +13,7 @@ import javax.persistence.Id;
 @Entity
 public class LoginDetails implements SuperEntity{
     @Id
+    private String user_ID;
     private String userName;
     private String password;
 }

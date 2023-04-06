@@ -1,7 +1,7 @@
 package com.damian.hms.dao.util;
 
 import com.damian.hms.dao.impl.LoginDetailsDAOIMPL;
-import com.damian.hms.service.util.GetAlert;
+import com.damian.hms.util.GetAlert;
 import javafx.scene.control.Alert;
 
 public class DaoFactory {

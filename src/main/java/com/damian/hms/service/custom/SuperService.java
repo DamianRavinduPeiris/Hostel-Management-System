@@ -11,7 +11,7 @@ public interface SuperService<T extends SuperDTO, ID> {
 
     boolean delete(ID id);
 
-    boolean update(T t, ID id);
+    boolean update(T t);
 
     Optional<T> search(ID id);
 

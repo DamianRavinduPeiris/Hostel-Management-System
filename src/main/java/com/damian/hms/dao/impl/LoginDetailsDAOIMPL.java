@@ -17,7 +17,8 @@ public class LoginDetailsDAOIMPL implements LoginDetailsDAO {
 
     @Override
     public boolean update(LoginDetails loginDetails) {
-        return false;
+        LoginRepo lr = new LoginRepo();
+        return lr.update(loginDetails);
     }
 
     @Override

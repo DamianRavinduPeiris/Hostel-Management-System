@@ -1,6 +1,6 @@
 package com.damian.hms.validator;
 
-import com.damian.hms.service.util.GetAlert;
+import com.damian.hms.util.GetAlert;
 import javafx.scene.control.Alert;
 
 import java.util.regex.Matcher;

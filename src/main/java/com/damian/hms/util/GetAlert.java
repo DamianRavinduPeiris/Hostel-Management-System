@@ -1,8 +1,9 @@
-package com.damian.hms.service.util;
+package com.damian.hms.util;
 
 import javafx.scene.control.Alert;
 
 public class GetAlert {
+    public static Object AlertType;
     private static Alert a;
     private static GetAlert alert;
     private GetAlert(){

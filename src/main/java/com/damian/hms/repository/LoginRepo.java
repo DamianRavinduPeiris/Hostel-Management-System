@@ -1,12 +1,11 @@
 package com.damian.hms.repository;
 
 import com.damian.hms.entity.LoginDetails;
-import com.damian.hms.service.util.GetAlert;
+import com.damian.hms.util.GetAlert;
 import com.damian.hms.util.FactoryConfiguration;
 import javafx.scene.control.Alert;
 import org.hibernate.Session;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 public class LoginRepo {
@@ -38,4 +37,17 @@ public class LoginRepo {
 
     }
 
+    public boolean update(LoginDetails loginDetails) {
+        session.beginTransaction();
+
+        try {
+            session.update(loginDetails);
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            GetAlert.getInstance().showAlert("Error in Login repo : "+e.getLocalizedMessage(), Alert.AlertType.ERROR);
+            return false;
+        }
+        session.getTransaction().commit();
+        return true;
+    }
 }

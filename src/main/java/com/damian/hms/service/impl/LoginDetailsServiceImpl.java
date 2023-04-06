@@ -25,8 +25,9 @@ public class LoginDetailsServiceImpl implements LoginDetailsService {
     }
 
     @Override
-    public boolean update(LoginDetails_DTO loginDetailsDto, String s) {
-        return false;
+    public boolean update(LoginDetails_DTO loginDetailsDto) {
+        LoginDetailsDAOIMPL ld = (LoginDetailsDAOIMPL) DaoFactory.getDao(DaoTypes.LoginDetailsDAO);
+       return ld.update(Convertor.convertLoginDetails_DTOToLoginDetails(loginDetailsDto));
     }
 
     @Override
