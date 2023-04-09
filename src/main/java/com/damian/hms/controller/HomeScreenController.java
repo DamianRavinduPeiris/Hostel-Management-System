@@ -43,8 +43,8 @@ public class HomeScreenController implements Initializable {
         t3.setVisible(false);
 
         Platform.runLater(() -> {
-            Node[] nodes = {t1, t2, sp, t3, l1,lb};
-            for(Node n :nodes){
+            Node[] nodes = {t1, t2, sp, t3, l1, lb};
+            for (Node n : nodes) {
                 Animator.getInstance().setLightSpeedIn(n);
 
             }
@@ -85,19 +85,16 @@ public class HomeScreenController implements Initializable {
             GetAlert.getInstance().showAlert("Login Failed!", Alert.AlertType.ERROR);
         }*/
 
-
+/*
         Optional<LoginDetails_DTO> ld = ls.search("U001");
-        if(ld.get().getUserName().equals(t1.getText()) && ld.get().getPassword().equals(t2.getText())){
+        if (ld.get().getUserName().equals(t1.getText()) && ld.get().getPassword().equals(t2.getText())) {
             Navigator.navigate((Stage) t2.getScene().getWindow(), NavigateTypes.DASHBOARD);
-        }else{
+        } else {
             GetAlert.getInstance().showAlert("Invalid Credentials!", Alert.AlertType.ERROR);
-        }
+        }*/
+        Navigator.navigate((Stage) t2.getScene().getWindow(), NavigateTypes.DASHBOARD);
 
     }
-
-
-
-
 
 
 }

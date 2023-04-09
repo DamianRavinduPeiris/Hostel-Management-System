@@ -7,8 +7,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validator {
-    private static Pattern userNamePattern = Pattern.compile("^([a-z|0-9]{3,})[@]([a-z]{2,})\\.(com|lk)");
+    private static Pattern userNamePattern = Pattern.compile("^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,}$");
+    /*
+    ex - john3@gmail.com
+*/
     private static Pattern passwordPattern = Pattern.compile("[A-Za-z0-9]+\\.");
+
+    /*
+   ex - John1234.
+*/
 
     private  static Pattern telephonePattern = Pattern.compile("^(075|077|078|011|091|038|036)([0-9]{7})$");
     public static boolean check(String txt,ValidateTypes validateTypes){
@@ -27,7 +34,7 @@ public class Validator {
     }
     public static boolean validate(String txt , Pattern pattern){
         Matcher matcher = pattern.matcher(txt);
-        System.out.println(pattern.toString()+" "+ matcher.matches());
+        System.out.println(txt+" : "+ matcher.matches());
         return matcher.matches()?true:false;
     }
 

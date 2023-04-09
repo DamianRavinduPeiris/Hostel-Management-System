@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface SuperDAO <T extends SuperEntity,ID>{
     boolean add(T t);
     boolean update(T t);
-    boolean delete(T t);
+    boolean delete(ID id);
    Optional <T> search(ID id);
     ArrayList<T> getAll();
 }

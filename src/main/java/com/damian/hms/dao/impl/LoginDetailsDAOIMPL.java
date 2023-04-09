@@ -22,7 +22,7 @@ public class LoginDetailsDAOIMPL implements LoginDetailsDAO {
     }
 
     @Override
-    public boolean delete(LoginDetails loginDetails) {
+    public boolean delete(String id) {
         return false;
     }
 

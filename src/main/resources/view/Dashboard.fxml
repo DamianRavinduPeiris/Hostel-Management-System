@@ -7,33 +7,78 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.damian.hms.controller.DashboardController">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.damian.hms.controller.DashboardController">
    <children>
-      <ImageView fx:id="image" fitHeight="212.0" fitWidth="224.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="image" fitHeight="212.0" fitWidth="224.0" layoutX="67.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/admin2.png" />
          </image>
       </ImageView>
-      <Label fx:id="l1" layoutX="25.0" layoutY="246.0" prefHeight="50.0" prefWidth="235.0" style="-fx-background-color: lightyellow;" text="ADMINISTRATOR." textAlignment="JUSTIFY">
+      <Label fx:id="l1" layoutX="75.0" layoutY="238.0" prefHeight="50.0" prefWidth="235.0" style="-fx-background-color: lightyellow;" text="ADMINISTRATOR." textAlignment="JUSTIFY">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <JFXButton fx:id="ucButton" buttonType="RAISED" layoutX="60.0" layoutY="389.0" onAction="#ucButtonOnAction" prefHeight="60.0" prefWidth="288.0" style="-fx-background-color: lightyellow;" text="UPDATE CREDENTIALS.">
-         <font>
-            <Font name="System Bold Italic" size="15.0" />
-         </font>
-      </JFXButton>
-      <ImageView fx:id="i2" fitHeight="60.0" fitWidth="70.0" layoutX="7.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/settings.png" />
-         </image>
-      </ImageView>
       <Label fx:id="dateAndTime" layoutX="1438.0" layoutY="33.0" prefHeight="50.0" prefWidth="390.0" style="-fx-background-color: white;" textAlignment="JUSTIFY">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="ap" layoutX="350.0" layoutY="120.0" prefHeight="968.0" prefWidth="1451.0" style="-fx-background-color: white;" />
+      <AnchorPane fx:id="ap" layoutX="362.0" layoutY="141.0" prefHeight="968.0" prefWidth="1452.0" style="-fx-background-color: white;" />
+      <ImageView fx:id="i2" fitHeight="60.0" fitWidth="71.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/mc.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="i3" fitHeight="60.0" fitWidth="71.0" layoutX="7.0" layoutY="411.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/bed.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="i4" fitHeight="60.0" fitWidth="71.0" layoutY="514.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/mr.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="i5" fitHeight="60.0" fitWidth="71.0" layoutY="642.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/luggage.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="i6" fitHeight="60.0" fitWidth="71.0" layoutY="751.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/person.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="ucButton" buttonType="RAISED" layoutX="68.0" layoutY="323.0" onAction="#ucButtonOnAction" prefHeight="60.0" prefWidth="292.0" style="-fx-background-color: white;" text="UPDATE CREDENTIALS.">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="crButton" buttonType="RAISED" layoutX="68.0" layoutY="418.0" onAction="#crButtonOnAction" prefHeight="60.0" prefWidth="292.0" style="-fx-background-color: white;" text="Check Room Availability.">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="mrButton" buttonType="RAISED" layoutX="68.0" layoutY="525.0" onAction="#mrButtonOnAction" prefHeight="60.0" prefWidth="292.0" style="-fx-background-color: WHITE;" text="Manage Rooms.">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="mResButton" buttonType="RAISED" layoutX="60.0" layoutY="634.0" onAction="#mResButtonOnAction" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: WHITE;" text="Manage Reservations.">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="msStudents" buttonType="RAISED" layoutX="64.0" layoutY="751.0" onAction="#msButtonOnAction" prefHeight="60.0" prefWidth="292.0" style="-fx-background-color: WHITE;" text="Manage Students.">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="l2" layoutX="694.0" prefHeight="141.0" prefWidth="676.0" style="-fx-background-color: lightyellow;" text="DASHBOARD." textAlignment="JUSTIFY">
+         <font>
+            <Font name="System Bold" size="96.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
