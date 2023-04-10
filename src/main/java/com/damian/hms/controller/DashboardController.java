@@ -1,6 +1,7 @@
 package com.damian.hms.controller;
 
 import com.damian.hms.util.Animator;
+import com.damian.hms.util.NavigateTypes;
 import com.damian.hms.util.Navigator;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.AnimationTimer;
@@ -10,6 +11,9 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -17,21 +21,25 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
-    public ImageView image;
-    public Label l1;
+
     public JFXButton ucButton;
-    public ImageView i2;
+
     public Label dateAndTime;
     public AnchorPane ap;
-    public ImageView i3;
-    public ImageView i4;
-    public ImageView i5;
-    public ImageView i6;
+
     public JFXButton crButton;
     public JFXButton mrButton;
     public JFXButton mResButton;
     public JFXButton msStudents;
-    public Label l2;
+    public ImageView i1;
+
+    public JFXButton homeButton;
+
+    public HBox h1;
+    public VBox v1;
+    public VBox v2;
+    public ImageView i3;
+    public Label l3;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -42,10 +50,12 @@ public class DashboardController implements Initializable {
             }
         };
         timer.start();
-        Node[] nodes = {image, l1, ucButton, i2, dateAndTime, i3, i4, i5, i6, crButton, mrButton, mResButton, msStudents, l2};
+        Node[] nodes = { ucButton,  dateAndTime,  crButton, mrButton, mResButton, msStudents, i1,homeButton,  h1, v1, v2,i3,l3};
         for (Node n : nodes) {
             Animator.getInstance().setJackInTheBox(n);
+
         }
+
     }
 
     public void ucButtonOnAction(ActionEvent actionEvent) {
@@ -64,5 +74,10 @@ public class DashboardController implements Initializable {
     }
 
     public void msButtonOnAction(ActionEvent actionEvent) {
+        Navigator.changePane(ap,"StudentManager.fxml");
+    }
+
+    public void homeButtonOnAction(ActionEvent actionEvent) {
+        Navigator.navigate((Stage)h1.getScene().getWindow(), NavigateTypes.HOME);
     }
 }

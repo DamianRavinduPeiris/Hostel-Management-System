@@ -2,8 +2,10 @@ package com.damian.hms.convertor;
 
 import com.damian.hms.dto.LoginDetails_DTO;
 import com.damian.hms.dto.Room_DTO;
+import com.damian.hms.dto.Student_DTO;
 import com.damian.hms.entity.LoginDetails;
 import com.damian.hms.entity.Room;
+import com.damian.hms.entity.Student;
 import com.damian.hms.tablemodel.RoomTM;
 
 import java.util.ArrayList;
@@ -36,6 +38,20 @@ public class Convertor {
             roomTMArrayList.add(new RoomTM(room_dto.getRoom_id(), room_dto.getRoom_type(), room_dto.getKey_money(), room_dto.getQty()));
         }
         return roomTMArrayList;
+    }
+    public static Student toStudent(Student_DTO student_dto) {
+        return new Student(student_dto.getStudent_id(), student_dto.getStudent_name(), student_dto.getStudent_address(), student_dto.getStudent_contact(), student_dto.getStudent_dob(), student_dto.getGender());
+    }
+    public static Student_DTO toStudent_DTO(Student student) {
+        return new Student_DTO(student.getStudent_id(), student.getStudent_name(), student.getStudent_address(), student.getStudent_contact(), student.getStudent_dob(), student.getGender());
+    }
+
+    public static ArrayList<Student_DTO> toStudentDtoArrayList(ArrayList<Student> studentArrayList) {
+        ArrayList<Student_DTO> student_dtoArrayList = new ArrayList<>();
+        for (Student student : studentArrayList) {
+            student_dtoArrayList.add(toStudent_DTO(student));
+        }
+        return student_dtoArrayList;
     }
 
 }

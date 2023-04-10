@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -38,6 +39,8 @@ public class RoomManagerController implements Initializable {
     public JFXButton clear;
 
     private final String[] optionsArray = {"Add a room.", "Update a room.", "Delete a room."};
+    public Label t5;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,7 +54,7 @@ public class RoomManagerController implements Initializable {
         update.setVisible(false);
         delete.setVisible(false);
 
-        Node[] nodes = {l1, cb, t1, t2, t3, t4, clear};
+        Node[] nodes = {l1, cb, t1, t2, t3, t4,t5, clear};
         for (Node n : nodes) {
             Animator.getInstance().setJackInTheBox(n);
         }

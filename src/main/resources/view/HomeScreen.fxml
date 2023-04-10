@@ -10,42 +10,48 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.damian.hms.controller.HomeScreenController">
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.damian.hms.controller.HomeScreenController">
    <children>
-      <ImageView fx:id="image" fitHeight="1080.0" fitWidth="1920.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="i1" fitHeight="596.0" fitWidth="935.0" layoutX="147.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/hs.png" />
+            <Image url="@../assets/logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="l1" layoutX="1016.0" layoutY="243.0" prefHeight="69.0" prefWidth="425.0" style="-fx-background-color: lightyellow;" text="ADMINISTRATOR LOGIN." textAlignment="RIGHT">
+      <Label fx:id="l1" layoutX="334.0" layoutY="86.0" prefHeight="70.0" prefWidth="577.0" text="WELCOME BACK :)" underline="true">
          <font>
-            <Font name="System Bold" size="33.0" />
+            <Font name="Britannic Bold" size="69.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="t1" layoutX="1049.0" layoutY="421.0" onAction="#t1OnAction" prefHeight="59.0" prefWidth="396.0" promptText="Enter username here.">
+      <JFXTextField fx:id="t1" focusColor="#000925" layoutX="1193.0" layoutY="353.0" onAction="#t1OnAction" prefHeight="62.0" prefWidth="519.0" promptText="Enter username here." unFocusColor="BLACK">
          <font>
-            <Font name="System Bold Italic" size="15.0" />
+            <Font name="System Bold Italic" size="23.0" />
          </font>
       </JFXTextField>
-      <JFXPasswordField fx:id="t2" layoutX="1046.0" layoutY="553.0" onAction="#t2OnAction" prefHeight="31.0" prefWidth="402.0" promptText="Enter password here.">
+      <JFXPasswordField fx:id="t2" layoutX="1193.0" layoutY="490.0" onAction="#t2OnAction" prefHeight="50.0" prefWidth="519.0" promptText="Enter password here.">
          <font>
-            <Font name="System Bold Italic" size="15.0" />
+            <Font name="System Bold Italic" size="23.0" />
          </font>
       </JFXPasswordField>
-      <JFXButton fx:id="lb" layoutX="1288.0" layoutY="734.0" onAction="#loginOnAction" prefHeight="31.0" prefWidth="155.0" style="-fx-background-color: WHITE;" text="LOGIN." textFill="#250202">
+      <JFXTextField fx:id="t3" focusColor="#000925" layoutX="1193.0" layoutY="478.0" prefHeight="62.0" prefWidth="519.0" unFocusColor="BLACK">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton fx:id="lb" buttonType="RAISED" layoutX="1207.0" layoutY="654.0" onAction="#loginOnAction" prefHeight="31.0" prefWidth="460.0" style="-fx-background-color: lightgreen;" text="LOGIN." textFill="#250202">
+         <font>
+            <Font name="System Bold" size="25.0" />
          </font>
       </JFXButton>
-      <JFXCheckBox fx:id="sp" checkedColor="#04110a" layoutX="1129.0" layoutY="684.0" onAction="#spOnAction" prefHeight="21.0" prefWidth="236.0" text="Show password?">
+      <JFXCheckBox fx:id="sp" checkedColor="#04110a" layoutX="1531.0" layoutY="577.0" onAction="#spOnAction" prefHeight="21.0" prefWidth="236.0" text="Show password?">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </JFXCheckBox>
-      <JFXTextField fx:id="t3" layoutX="1049.0" layoutY="525.0" prefHeight="59.0" prefWidth="396.0">
+      <Label fx:id="l2" layoutX="1096.0" layoutY="204.0" prefHeight="70.0" prefWidth="729.0" text="ADMINISTRATOR LOGIN." underline="true">
          <font>
-            <Font name="System Bold Italic" size="15.0" />
+            <Font name="Britannic Bold" size="69.0" />
          </font>
-      </JFXTextField>
+      </Label>
    </children>
 </AnchorPane>

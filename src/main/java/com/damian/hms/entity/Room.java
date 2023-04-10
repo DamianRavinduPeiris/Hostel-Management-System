@@ -2,9 +2,7 @@ package com.damian.hms.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @AllArgsConstructor
@@ -23,7 +21,7 @@ public class Room implements SuperEntity{
     private double key_money;
     @NonNull
     private int qty;
-    @OneToMany(targetEntity = Reservation.class,mappedBy = "room_id")
+    @OneToMany(targetEntity = Reservation.class,mappedBy = "room_id",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Reservation> reservationList;
 
 }

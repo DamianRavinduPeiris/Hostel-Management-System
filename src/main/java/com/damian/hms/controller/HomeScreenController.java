@@ -1,12 +1,9 @@
 package com.damian.hms.controller;
 
-import animatefx.animation.Shake;
-import com.damian.hms.dto.LoginDetails_DTO;
 import com.damian.hms.service.impl.LoginDetailsServiceImpl;
-import com.damian.hms.util.Animator;
-import com.damian.hms.util.GetAlert;
 import com.damian.hms.service.util.ServiceFactory;
 import com.damian.hms.service.util.ServiceTypes;
+import com.damian.hms.util.Animator;
 import com.damian.hms.util.NavigateTypes;
 import com.damian.hms.util.Navigator;
 import com.jfoenix.controls.JFXButton;
@@ -16,38 +13,43 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 
 public class HomeScreenController implements Initializable {
-    public Label dateAndTime;
+
     public TextField t1;
     public TextField t2;
 
     public JFXCheckBox sp;
     public JFXTextField t3;
-    public Label l1;
+
     public ImageView image;
     public JFXButton lb;
+
+    public ImageView i1;
+    public Label l1;
+    public Label l2;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         t3.setVisible(false);
 
         Platform.runLater(() -> {
-            Node[] nodes = {t1, t2, sp, t3, l1, lb};
+            Node[] nodes = {t1, t2, sp, t3, lb,i1,l1,l2};
             for (Node n : nodes) {
                 Animator.getInstance().setLightSpeedIn(n);
 
             }
+
 
         });
 

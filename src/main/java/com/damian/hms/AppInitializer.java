@@ -1,7 +1,5 @@
 package com.damian.hms;
 
-import animatefx.animation.LightSpeedIn;
-import com.damian.hms.util.PropertyInjector;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

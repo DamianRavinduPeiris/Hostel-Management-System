@@ -7,15 +7,20 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class Navigator {
     public static void navigate(Stage stage, NavigateTypes navigateType) {
-        if (Objects.requireNonNull(navigateType) == NavigateTypes.DASHBOARD) {
-            changeUI(stage, "Dashboard.fxml", "Admin Dashboard.");
-        } else {
-            GetAlert.getInstance().showAlert("Not implemented yet!", Alert.AlertType.ERROR);
+        switch (navigateType) {
+            case DASHBOARD:
+                changeUI(stage, "Dashboard.fxml", "Admin Dashboard.");
+                break;
+            case HOME:
+                changeUI(stage, "HomeScreen.fxml", "Home Screen.");
+                break;
+            default:
+                GetAlert.getInstance().showAlert("Not implemented yet!", Alert.AlertType.ERROR);
         }
+
 
     }
 

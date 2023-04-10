@@ -11,6 +11,7 @@ import java.sql.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 
 public class Student_DTO implements SuperDTO{
 
