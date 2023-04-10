@@ -80,9 +80,19 @@ public class ReservationManagerController implements Initializable {
 
 
         ReservationServiceImpl res = (ReservationServiceImpl) ServiceFactory.getService(ServiceTypes.ReservationService);
-        boolean b = res.add(new Reservation_DTO(t1.getText(), Date.valueOf(dor.getValue()), Convertor.toStudent(student.get()), ridCb.getValue().toString(), pCb.getValue().toString(), Convertor.toRoom(room.get())));
-        if(b){
-            GetAlert.getInstance().showAlert("Reservation successfully added!", Alert.AlertType.INFORMATION);
+        boolean b1 = res.add(new Reservation_DTO(t1.getText(), Date.valueOf(dor.getValue()), Convertor.toStudent(student.get()), ridCb.getValue().toString(), pCb.getValue().toString(), Convertor.toRoom(room.get())));
+        if(b1){
+            RoomDetailsServiceImpl roomDetailsService = (RoomDetailsServiceImpl) ServiceFactory.getService(ServiceTypes.RoomDetailsService);
+            Optional<Room_DTO> room1 = roomDetailsService.search(ridCb.getValue().toString());
+            System.out.println(ridCb.getValue().toString());
+            System.out.println(room1.get().getQty());
+            room1.get().setQty(room1.get().getQty() - 1);
+            boolean b2 = roomDetailsService.update(room1.get());
+            if(b2){
+                GetAlert.getInstance().showAlert("Reservation successfully added!", Alert.AlertType.INFORMATION);
+            }
+
+
         }
 
 
