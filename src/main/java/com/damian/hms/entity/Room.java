@@ -21,7 +21,7 @@ public class Room implements SuperEntity{
     private double key_money;
     @NonNull
     private int qty;
-    @OneToMany(targetEntity = Reservation.class,mappedBy = "room_id",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = Reservation.class,mappedBy = "room",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Reservation> reservationList;
 
 }

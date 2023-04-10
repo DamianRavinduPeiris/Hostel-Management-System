@@ -44,4 +44,10 @@ public class RoomDetailsServiceImpl implements RoomDetailsService {
         RoomDetailsDAOIMPL dao = DaoFactory.getDao(DaoTypes.RoomDetailsDAO);
         return dao.getAll() == null ? null : Convertor.toRoomDtoArrayList(dao.getAll());
     }
+
+    @Override
+    public ArrayList<String> getRoomIds() {
+        RoomDetailsDAOIMPL dao = DaoFactory.getDao(DaoTypes.RoomDetailsDAO);
+        return dao.getRoomIds();
+    }
 }

@@ -45,4 +45,10 @@ public class StudentServiceImpl implements StudentService {
         return Convertor.toStudentDtoArrayList(dao.getAll());
 
     }
+
+    @Override
+    public ArrayList<String> getIds() {
+        StudentDAOIMPL dao = (StudentDAOIMPL) DaoFactory.getDao(DaoTypes.StudentDAO);
+        return dao.getIds();
+    }
 }

@@ -82,4 +82,17 @@ public class StudentRepo {
         }
         return Optional.empty();
     }
+    public ArrayList<String> getStudentIds(){
+        session.beginTransaction();
+        try {
+            ArrayList<String> ids = (ArrayList<String>) session.createQuery("select student_id from Student").list();
+            session.getTransaction().commit();
+            return ids;
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            GetAlert.getInstance().showAlert("Error in StudentRepo :" + e.getLocalizedMessage(), Alert.AlertType.ERROR);
+        }
+
+        return null;
+    }
 }

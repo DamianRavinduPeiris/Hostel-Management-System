@@ -71,6 +71,7 @@ public class DashboardController implements Initializable {
     }
 
     public void mResButtonOnAction(ActionEvent actionEvent) {
+        Navigator.changePane(ap,"ReservationManager.fxml");
     }
 
     public void msButtonOnAction(ActionEvent actionEvent) {

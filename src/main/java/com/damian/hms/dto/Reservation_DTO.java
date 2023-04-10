@@ -1,5 +1,6 @@
 package com.damian.hms.dto;
 
+import com.damian.hms.entity.Room;
 import com.damian.hms.entity.Student;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,5 +19,6 @@ public class Reservation_DTO implements SuperDTO{
     private Student student_id;
     private String room_type_id;
     private String payment_status;
+    private Room room_id;
 
 }

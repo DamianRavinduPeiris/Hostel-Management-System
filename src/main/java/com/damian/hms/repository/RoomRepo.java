@@ -60,6 +60,8 @@ public class RoomRepo {
         Room room = null;
         try {
             room = session.get(Room.class, s);
+            session.getTransaction().commit();
+            session.close();
         } catch (Exception e) {
             GetAlert.getInstance().showAlert("Error in RoomRepo :" + e.getLocalizedMessage(), Alert.AlertType.ERROR);
         }
@@ -78,5 +80,20 @@ public class RoomRepo {
             return false;
         }
         return true;
+    }
+    public ArrayList<String> getRoomIds(){
+        session.beginTransaction();
+        ArrayList<String> ids = null;
+        try {
+            session.getTransaction().commit();
+            ids = (ArrayList<String>) session.createQuery("SELECT id FROM Room").list();
+            return ids;
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            GetAlert.getInstance().showAlert("Error in RoomRepo :" + e.getLocalizedMessage(), Alert.AlertType.ERROR);
+        }
+        return null;
+
+
     }
 }

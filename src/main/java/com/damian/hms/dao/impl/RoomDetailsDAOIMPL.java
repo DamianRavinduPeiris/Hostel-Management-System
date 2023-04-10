@@ -37,4 +37,10 @@ public class RoomDetailsDAOIMPL implements RoomDetailsDAO {
         RoomRepo r = new RoomRepo();
         return r.getAll();
     }
+
+    @Override
+    public ArrayList<String> getRoomIds() {
+        RoomRepo r = new RoomRepo();
+        return r.getRoomIds();
+    }
 }

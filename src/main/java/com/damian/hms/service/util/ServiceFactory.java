@@ -1,6 +1,7 @@
 package com.damian.hms.service.util;
 
 import com.damian.hms.service.impl.LoginDetailsServiceImpl;
+import com.damian.hms.service.impl.ReservationServiceImpl;
 import com.damian.hms.service.impl.RoomDetailsServiceImpl;
 import com.damian.hms.service.impl.StudentServiceImpl;
 import com.damian.hms.util.GetAlert;
@@ -15,6 +16,8 @@ public class ServiceFactory {
                 return (T) new RoomDetailsServiceImpl();
             case StudentService:
                 return (T) new StudentServiceImpl();
+            case ReservationService:
+                return (T) new ReservationServiceImpl();
             default:
                 GetAlert.getInstance().showAlert("Invalid Service Type!", Alert.AlertType.ERROR);
         }

@@ -38,4 +38,10 @@ public class StudentDAOIMPL implements StudentDAO {
        StudentRepo sr = new StudentRepo();
          return sr.getAll();
     }
+
+    @Override
+    public ArrayList<String> getIds() {
+        StudentRepo sr = new StudentRepo();
+        return sr.getStudentIds();
+    }
 }

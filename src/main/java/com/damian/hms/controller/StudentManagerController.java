@@ -47,6 +47,12 @@ public class StudentManagerController implements Initializable {
     public String[] optionsArray = {"Add a student.", "Update a student.", "Delete a student."};
     public String[] genderArray = {"Male.", "Female."};
     public Label t5;
+    public DatePicker dor;
+    public Label l3;
+    public JFXComboBox idCb;
+    public Label l2;
+    public JFXComboBox ridCb;
+    public JFXComboBox pCb;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -154,6 +160,7 @@ public class StudentManagerController implements Initializable {
 
 
     }
+
 
 
 }
