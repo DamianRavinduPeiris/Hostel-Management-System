@@ -5,6 +5,8 @@ import com.damian.hms.dao.impl.ReservationDAOIMPL;
 import com.damian.hms.dao.util.DaoFactory;
 import com.damian.hms.dao.util.DaoTypes;
 import com.damian.hms.dto.Reservation_DTO;
+import com.damian.hms.dto.Student_DTO;
+import com.damian.hms.entity.Student;
 import com.damian.hms.service.custom.ReservationService;
 
 import java.util.ArrayList;
@@ -42,5 +44,17 @@ public class ReservationServiceImpl implements ReservationService {
     public ArrayList<String> getStudentIds(String room_id) {
         ReservationDAOIMPL dao = (ReservationDAOIMPL) DaoFactory.getDao(DaoTypes.ReservationDAO);
         return dao.getStudentIds(room_id);
+    }
+
+    @Override
+    public String getRoomId(String student_id) {
+        ReservationDAOIMPL dao = (ReservationDAOIMPL) DaoFactory.getDao(DaoTypes.ReservationDAO);
+        return dao.getRoomId(student_id);
+    }
+
+    @Override
+    public ArrayList<Student_DTO> nkmStudents() {
+        ReservationDAOIMPL rs = (ReservationDAOIMPL) DaoFactory.getDao(DaoTypes.ReservationDAO);
+        return Convertor.toStudentDtoArrayList(rs.nkmStudents());
     }
 }

@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @RequiredArgsConstructor
 
-public class Student implements SuperEntity{
+public class Student implements SuperEntity {
     @Id
     @NonNull
     private String student_id;
@@ -26,6 +26,6 @@ public class Student implements SuperEntity{
     private Date student_dob;
     @NonNull
     private String gender;
-    @OneToMany(targetEntity = Reservation.class,mappedBy = "student",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = Reservation.class, mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Reservation> reservationList;
 }

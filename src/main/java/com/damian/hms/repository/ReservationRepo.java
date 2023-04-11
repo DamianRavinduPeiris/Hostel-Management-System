@@ -1,6 +1,7 @@
 package com.damian.hms.repository;
 
 import com.damian.hms.entity.Reservation;
+import com.damian.hms.entity.Student;
 import com.damian.hms.util.FactoryConfiguration;
 import com.damian.hms.util.GetAlert;
 import javafx.scene.control.Alert;
@@ -46,16 +47,36 @@ public class ReservationRepo {
         return null;
 
     }
- /*   public ArrayList<String> getReservationIds(){
+
+    public String getRoomId(String studentId) {
         session.beginTransaction();
-        ArrayList<String> reservationIds = null;
         try {
-            reservationIds = (ArrayList<String>) session.createQuery("select reservationId from Reservation").list();
+            String roomId = (String) session.createQuery("SELECT r.room.id FROM Reservation r WHERE r.student.id = :studentId").setParameter("studentId", studentId).uniqueResult();
             session.getTransaction().commit();
+            session.close();
+            return roomId;
         } catch (Exception e) {
             session.getTransaction().rollback();
-            GetAlert.getInstance().showAlert("Error in Reservationrepo : "+e.getLocalizedMessage(), Alert.AlertType.ERROR);
+            GetAlert.getInstance().showAlert("Error in Reservation repo : " + e.getLocalizedMessage(), Alert.AlertType.ERROR);
         }
-        return reservationIds;
-    }*/
+        return null;
+    }
+
+    public ArrayList<Student> nkmStudents() {
+        session.beginTransaction();
+        try {
+            List studentIds = session.createQuery("SELECT s FROM Student s "
+                    + "JOIN Reservation r ON s.id = r.student.id "
+                    + "JOIN Room rm ON rm.id = r.room.id "
+                    + "WHERE r.payment_status = 'Not Paid.'").list();
+
+            session.getTransaction().commit();
+            session.close();
+            return new ArrayList<>(studentIds);
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            GetAlert.getInstance().showAlert("Error in Reservation repo : " + e.getLocalizedMessage(), Alert.AlertType.ERROR);
+        }
+        return null;
+    }
 }

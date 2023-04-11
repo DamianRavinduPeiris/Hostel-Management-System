@@ -1,6 +1,9 @@
 package com.damian.hms.controller;
 
+import com.damian.hms.dto.Room_DTO;
 import com.damian.hms.dto.Student_DTO;
+import com.damian.hms.service.impl.ReservationServiceImpl;
+import com.damian.hms.service.impl.RoomDetailsServiceImpl;
 import com.damian.hms.service.impl.StudentServiceImpl;
 import com.damian.hms.service.util.ServiceFactory;
 import com.damian.hms.service.util.ServiceTypes;
@@ -25,7 +28,6 @@ import javafx.scene.paint.Paint;
 
 import java.net.URL;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -67,7 +69,7 @@ public class StudentManagerController implements Initializable {
         Collections.addAll(genderList, genderArray);
         gb.setItems(genderList);
 
-        Node[] nodes = {l1, cb, t1, t2, t3, t4,t5,clear};
+        Node[] nodes = {l1, cb, t1, t2, t3, t4, t5, clear};
         for (Node n : nodes) {
             Animator.getInstance().setJackInTheBox(n);
         }
@@ -97,27 +99,37 @@ public class StudentManagerController implements Initializable {
     }
 
     public void t1OnAction(ActionEvent actionEvent) {
-        StudentServiceImpl service = (StudentServiceImpl) ServiceFactory.getService(ServiceTypes.StudentService);
+        StudentServiceImpl service = ServiceFactory.getService(ServiceTypes.StudentService);
         Optional<Student_DTO> student = service.search(t1.getText());
-        if(student.isPresent()){
+        if (student.isPresent()) {
             t2.setText(student.get().getStudent_name());
             t3.setText(student.get().getStudent_address());
             t4.setText(String.valueOf(student.get().getStudent_contact()));
             dob.setValue(student.get().getStudent_dob().toLocalDate());
             gb.setValue(student.get().getGender());
 
-        }else{
+        } else {
             GetAlert.getInstance().showAlert("Student not found !", Alert.AlertType.ERROR);
         }
 
     }
 
     public void deleteOnAction(ActionEvent actionEvent) {
-        StudentServiceImpl ss = ServiceFactory.getService(ServiceTypes.StudentService);
-        boolean b1 = ss.delete(t1.getText());
+        ReservationServiceImpl rs = ServiceFactory.getService(ServiceTypes.ReservationService);
+        String roomId = rs.getRoomId(t1.getText());
+        RoomDetailsServiceImpl rds = ServiceFactory.getService(ServiceTypes.RoomDetailsService);
+        Optional<Room_DTO> room = rds.search(roomId);
+        room.get().setQty(room.get().getQty() + 1);
+        boolean b1 = rds.update(room.get());
         if (b1) {
-            GetAlert.getInstance().showAlert("Student Successfully deleted! ", Alert.AlertType.INFORMATION);
+            StudentServiceImpl ss = ServiceFactory.getService(ServiceTypes.StudentService);
+            boolean b2 = ss.delete(t1.getText());
+            if (b2) {
+                GetAlert.getInstance().showAlert("Student Successfully deleted! ", Alert.AlertType.INFORMATION);
+            }
         }
+
+
     }
 
     public void clearOnAction(ActionEvent actionEvent) {
@@ -125,20 +137,20 @@ public class StudentManagerController implements Initializable {
         for (TextField t : textFields) {
             t.clear();
         }
-        JFXComboBox [] comboBoxes = {cb, gb};
+        JFXComboBox[] comboBoxes = {cb, gb};
         for (JFXComboBox c : comboBoxes) {
             c.setValue(null);
         }
     }
 
     public void updateOnAction(ActionEvent actionEvent) {
-        if(Validator.check(t4.getText(), ValidateTypes.TELEPHONE)){
+        if (Validator.check(t4.getText(), ValidateTypes.TELEPHONE)) {
             StudentServiceImpl ss = ServiceFactory.getService(ServiceTypes.StudentService);
             boolean b1 = ss.update(new Student_DTO(t1.getText(), t2.getText(), t3.getText(), Integer.parseInt(t4.getText()), Date.valueOf(dob.getValue()), gb.getValue().toString()));
             if (b1) {
                 GetAlert.getInstance().showAlert("Student Successfully updated! ", Alert.AlertType.INFORMATION);
             }
-        }else{
+        } else {
             t4.setFocusColor(Paint.valueOf("red"));
             Animator.getInstance().setShake(t4);
             GetAlert.getInstance().showAlert("Invalid telephone number !", Alert.AlertType.ERROR);
@@ -146,13 +158,13 @@ public class StudentManagerController implements Initializable {
     }
 
     public void addOnAction(ActionEvent actionEvent) {
-        if(Validator.check(t4.getText(), ValidateTypes.TELEPHONE)){
+        if (Validator.check(t4.getText(), ValidateTypes.TELEPHONE)) {
             StudentServiceImpl ss = ServiceFactory.getService(ServiceTypes.StudentService);
             boolean b1 = ss.add(new Student_DTO(t1.getText(), t2.getText(), t3.getText(), Integer.parseInt(t4.getText()), Date.valueOf(dob.getValue()), gb.getValue().toString()));
             if (b1) {
                 GetAlert.getInstance().showAlert("Student Successfully added! ", Alert.AlertType.INFORMATION);
             }
-        }else{
+        } else {
             t4.setFocusColor(Paint.valueOf("red"));
             Animator.getInstance().setShake(t4);
             GetAlert.getInstance().showAlert("Invalid telephone number !", Alert.AlertType.ERROR);
@@ -160,7 +172,6 @@ public class StudentManagerController implements Initializable {
 
 
     }
-
 
 
 }

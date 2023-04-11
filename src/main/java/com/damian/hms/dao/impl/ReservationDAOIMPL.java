@@ -4,6 +4,7 @@ import com.damian.hms.dao.custom.ReservationDAO;
 import com.damian.hms.dao.util.DaoFactory;
 import com.damian.hms.dao.util.DaoTypes;
 import com.damian.hms.entity.Reservation;
+import com.damian.hms.entity.Student;
 import com.damian.hms.repository.ReservationRepo;
 
 import java.util.ArrayList;
@@ -39,5 +40,15 @@ public class ReservationDAOIMPL implements ReservationDAO {
     public ArrayList<String> getStudentIds(String roomId) {
         ReservationRepo reservationRepo = new ReservationRepo();
         return reservationRepo.getStudentIds(roomId);
+    }
+
+    public String getRoomId(String studentId) {
+        ReservationRepo reservationRepo = new ReservationRepo();
+        return reservationRepo.getRoomId(studentId);
+    }
+
+    public ArrayList<Student> nkmStudents() {
+        ReservationRepo reservationRepo = new ReservationRepo();
+        return reservationRepo.nkmStudents();
     }
 }

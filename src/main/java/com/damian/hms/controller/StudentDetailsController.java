@@ -10,6 +10,7 @@ import com.damian.hms.service.util.ServiceTypes;
 import com.damian.hms.tablemodel.StudentTM;
 import com.damian.hms.util.Animator;
 import com.damian.hms.util.GetAlert;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,6 +41,7 @@ public class StudentDetailsController implements Initializable {
     public TableColumn c6;
     public JFXComboBox ridCb;
     public Label l2;
+    public JFXButton km;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -55,7 +57,7 @@ public class StudentDetailsController implements Initializable {
         ObservableList<String> rIds = FXCollections.observableArrayList(roomIds);
         ridCb.setItems(rIds);
 
-        Node[] nodes = {l1, tableView, l2, ridCb};
+        Node[] nodes = {l1, tableView, l2, ridCb, km};
         for (Node n : nodes) {
             Animator.getInstance().setJackInTheBox(n);
         }
@@ -63,6 +65,7 @@ public class StudentDetailsController implements Initializable {
     }
 
     public void ridCbOnAction(ActionEvent actionEvent) {
+        tableView.getItems().clear();
         ReservationServiceImpl rs = ServiceFactory.getService(ServiceTypes.ReservationService);
         ArrayList<String> studentIds = rs.getStudentIds(ridCb.getValue().toString());
         if (studentIds.isEmpty()) {
@@ -88,4 +91,16 @@ public class StudentDetailsController implements Initializable {
     }
 
 
+    public void kmOnAction(ActionEvent actionEvent) {
+        tableView.getItems().clear();
+        ReservationServiceImpl rs = ServiceFactory.getService(ServiceTypes.ReservationService);
+        ArrayList<Student_DTO> students = rs.nkmStudents();
+        ObservableList<StudentTM> studentTMS = FXCollections.observableArrayList();
+        for (Student_DTO sd : students) {
+            studentTMS.add(Convertor.toStudentTM(sd));
+        }
+        tableView.setItems(studentTMS);
+
+
+    }
 }

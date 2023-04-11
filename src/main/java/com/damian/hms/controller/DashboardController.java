@@ -56,6 +56,7 @@ public class DashboardController implements Initializable {
             Animator.getInstance().setJackInTheBox(n);
 
         }
+        Navigator.changePane(ap, "CredentialManager.fxml");
 
     }
 

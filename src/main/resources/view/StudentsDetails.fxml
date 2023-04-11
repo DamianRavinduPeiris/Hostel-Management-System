@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="ap" prefHeight="968.0" prefWidth="1452.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.damian.hms.controller.StudentDetailsController">
    <children>
-      <Label fx:id="l1" layoutX="258.0" layoutY="85.0" prefHeight="103.0" prefWidth="599.0" style="-fx-background-color: lightyellow;" text="Students who reserved rooms." textAlignment="RIGHT">
+      <Label fx:id="l1" layoutX="392.0" layoutY="104.0" prefHeight="103.0" prefWidth="599.0" style="-fx-background-color: lightyellow;" text="Students who reserved rooms." textAlignment="RIGHT">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>
@@ -32,20 +32,16 @@
       <HBox layoutX="170.0" layoutY="868.0" prefHeight="13.0" prefWidth="1008.0" style="-fx-background-color: black;" />
       <HBox layoutX="160.0" layoutY="56.0" prefHeight="13.0" prefWidth="1027.0" style="-fx-background-color: black;" />
       <HBox layoutX="170.0" layoutY="343.0" prefHeight="13.0" prefWidth="1001.0" style="-fx-background-color: black;" />
-      <HBox layoutX="243.0" layoutY="182.0" prefHeight="13.0" prefWidth="614.0" style="-fx-background-color: black;" />
-      <HBox layoutX="255.0" layoutY="78.0" prefHeight="13.0" prefWidth="605.0" style="-fx-background-color: black;" />
-      <VBox layoutX="243.0" layoutY="80.0" prefHeight="103.0" prefWidth="12.0" style="-fx-background-color: black;" />
-      <VBox layoutX="851.0" layoutY="81.0" prefHeight="110.0" prefWidth="12.0" style="-fx-background-color: black;" />
-      <JFXComboBox fx:id="ridCb" layoutX="345.0" layoutY="225.0" onAction="#ridCbOnAction" prefHeight="31.0" prefWidth="285.0" promptText="ROOM ID'S." />
-      <Label fx:id="l2" layoutX="199.0" layoutY="267.0" prefHeight="61.0" prefWidth="599.0" style="-fx-background-color: lightyellow;" text="💡SELECT A ROOM ID TO VIEW DETAILS OF STUDENTS WHO BOOKED." textAlignment="RIGHT">
+      <HBox layoutX="380.0" layoutY="200.0" prefHeight="13.0" prefWidth="614.0" style="-fx-background-color: black;" />
+      <HBox layoutX="392.0" layoutY="98.0" prefHeight="13.0" prefWidth="605.0" style="-fx-background-color: black;" />
+      <VBox layoutX="380.0" layoutY="98.0" prefHeight="103.0" prefWidth="12.0" style="-fx-background-color: black;" />
+      <VBox layoutX="985.0" layoutY="101.0" prefHeight="110.0" prefWidth="12.0" style="-fx-background-color: black;" />
+      <JFXComboBox fx:id="ridCb" layoutX="220.0" layoutY="243.0" onAction="#ridCbOnAction" prefHeight="31.0" prefWidth="285.0" promptText="ROOM ID'S." />
+      <Label fx:id="l2" layoutX="536.0" layoutY="228.0" prefHeight="61.0" prefWidth="471.0" style="-fx-background-color: lightyellow;" text="💡SELECT A ROOM ID TO VIEW DETAILS OF STUDENTS WHO BOOKED." textAlignment="RIGHT">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="km" layoutX="649.0" layoutY="225.0" onAction="#kmOnAction" prefHeight="31.0" prefWidth="508.0" style="-fx-background-color: lightgreen;" text="CLICK HERE TO VIEW STUDENTS WHO HAVENT PAID THE KEY MONEY.">
-         <font>
-            <Font name="System Italic" size="15.0" />
-         </font>
-      </JFXButton>
+      <JFXButton fx:id="km" buttonType="RAISED" layoutX="220.0" layoutY="299.0" onAction="#kmOnAction" prefHeight="31.0" prefWidth="590.0" style="-fx-background-color: lightgreen;" text="CLICK HERE TO VIEW THE STUDENTS WHO HAVEN'T PAID THE KEY MONEY YET." />
    </children>
 </AnchorPane>
