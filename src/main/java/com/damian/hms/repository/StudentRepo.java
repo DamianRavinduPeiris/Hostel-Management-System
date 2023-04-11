@@ -75,6 +75,7 @@ public class StudentRepo {
         session.beginTransaction();
         try {
             Student student = session.get(Student.class, s);
+            session.close();
             return student==null?Optional.empty():Optional.of(student);
         } catch (Exception e) {
             session.getTransaction().rollback();

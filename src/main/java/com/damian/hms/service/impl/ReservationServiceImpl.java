@@ -29,11 +29,18 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public Optional<Reservation_DTO> search(String s) {
+
         return Optional.empty();
     }
 
     @Override
     public ArrayList<Reservation_DTO> getAll() {
         return null;
+    }
+
+    @Override
+    public ArrayList<String> getStudentIds(String room_id) {
+        ReservationDAOIMPL dao = (ReservationDAOIMPL) DaoFactory.getDao(DaoTypes.ReservationDAO);
+        return dao.getStudentIds(room_id);
     }
 }

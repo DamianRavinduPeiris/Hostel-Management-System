@@ -40,6 +40,7 @@ public class DashboardController implements Initializable {
     public VBox v2;
     public ImageView i3;
     public Label l3;
+    public JFXButton swhrr;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,7 +51,7 @@ public class DashboardController implements Initializable {
             }
         };
         timer.start();
-        Node[] nodes = { ucButton,  dateAndTime,  crButton, mrButton, mResButton, msStudents, i1,homeButton,  h1, v1, v2,i3,l3};
+        Node[] nodes = { ucButton,  dateAndTime,  crButton, mrButton, mResButton, msStudents, i1,homeButton,  h1, v1, v2,i3,l3,swhrr};
         for (Node n : nodes) {
             Animator.getInstance().setJackInTheBox(n);
 
@@ -80,5 +81,9 @@ public class DashboardController implements Initializable {
 
     public void homeButtonOnAction(ActionEvent actionEvent) {
         Navigator.navigate((Stage)h1.getScene().getWindow(), NavigateTypes.HOME);
+    }
+
+    public void swrrButtonOnAction(ActionEvent actionEvent) {
+        Navigator.changePane(ap,"StudentDetails.fxml");
     }
 }

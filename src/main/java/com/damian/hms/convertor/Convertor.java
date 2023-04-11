@@ -9,6 +9,7 @@ import com.damian.hms.entity.Reservation;
 import com.damian.hms.entity.Room;
 import com.damian.hms.entity.Student;
 import com.damian.hms.tablemodel.RoomTM;
+import com.damian.hms.tablemodel.StudentTM;
 
 import java.util.ArrayList;
 
@@ -68,6 +69,11 @@ public class Convertor {
     public static Reservation_DTO toReservation_DTO(Reservation reservation) {
         return new Reservation_DTO(reservation.getReservation_Id(), reservation.getDate(), reservation.getStudent(), reservation.getRoom_type_id(), reservation.getPayment_status(), reservation.getRoom());
     }
+    //Student_Dto to studentTM
+    public static StudentTM toStudentTM(Student_DTO student_dto) {
+        return new StudentTM(student_dto.getStudent_id(), student_dto.getStudent_name(), student_dto.getStudent_address(), student_dto.getStudent_contact(), student_dto.getStudent_dob(), student_dto.getGender());
+    }
+
 
 
 }
