@@ -19,7 +19,8 @@ public class ReservationDAOIMPL implements ReservationDAO {
 
     @Override
     public boolean update(Reservation reservation) {
-        return false;
+        ReservationRepo reservationRepo = new ReservationRepo();
+        return reservationRepo.update(reservation);
     }
 
     @Override
@@ -29,7 +30,8 @@ public class ReservationDAOIMPL implements ReservationDAO {
 
     @Override
     public Optional<Reservation> search(String s) {
-        return Optional.empty();
+        ReservationRepo reservationRepo = new ReservationRepo();
+        return reservationRepo.search(s);
     }
 
     @Override

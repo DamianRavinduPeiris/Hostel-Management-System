@@ -9,6 +9,7 @@ import org.hibernate.Session;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ReservationRepo {
     private final Session session;
@@ -78,5 +79,31 @@ public class ReservationRepo {
             GetAlert.getInstance().showAlert("Error in Reservation repo : " + e.getLocalizedMessage(), Alert.AlertType.ERROR);
         }
         return null;
+    }
+
+    public boolean update(Reservation reservation) {
+        session.beginTransaction();
+        try {
+            session.update(reservation);
+            session.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            GetAlert.getInstance().showAlert("Error in Reservation repo : " + e.getLocalizedMessage(), Alert.AlertType.ERROR);
+        }
+        return false;
+    }
+
+    public Optional<Reservation> search(String s) {
+        session.beginTransaction();
+        try {
+            Reservation reservation = session.get(Reservation.class, s);
+            session.getTransaction().commit();
+            return Optional.ofNullable(reservation);
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            GetAlert.getInstance().showAlert("Error in Reservation repo : " + e.getLocalizedMessage(), Alert.AlertType.ERROR);
+        }
+        return Optional.empty();
     }
 }

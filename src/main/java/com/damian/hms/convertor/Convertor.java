@@ -75,5 +75,7 @@ public class Convertor {
     }
 
 
-
+    public static Reservation_DTO toReservationDto(Reservation reservation) {
+        return new Reservation_DTO(reservation.getReservation_Id(), reservation.getDate(), reservation.getStudent(), reservation.getRoom_type_id(), reservation.getPayment_status(), reservation.getRoom());
+    }
 }

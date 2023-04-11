@@ -22,7 +22,7 @@
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="add" buttonType="RAISED" layoutX="648.0" layoutY="662.0" onAction="#addOnAction" prefHeight="31.0" prefWidth="217.0" style="-fx-background-color: lightgreen;" text="ADD.">
+      <JFXButton fx:id="add" buttonType="RAISED" layoutX="445.0" layoutY="662.0" onAction="#addOnAction" prefHeight="31.0" prefWidth="217.0" style="-fx-background-color: lightgreen;" text="ADD.">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -53,5 +53,10 @@
       </Label>
       <JFXComboBox fx:id="ridCb" focusColor="#171a22" layoutX="821.0" layoutY="343.0" prefHeight="22.0" prefWidth="286.0" promptText="Room type ID." style="-fx-background-color: lightyellow;" />
       <JFXComboBox fx:id="pCb" focusColor="#171a22" layoutX="821.0" layoutY="425.0" prefHeight="22.0" prefWidth="286.0" promptText="Payment status." style="-fx-background-color: lightyellow;" />
+      <JFXButton fx:id="update" buttonType="RAISED" layoutX="689.0" layoutY="662.0" onAction="#updateOnAction" prefHeight="31.0" prefWidth="217.0" style="-fx-background-color: lightgreen;" text="UPDATE.">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

@@ -1,9 +1,11 @@
 package com.damian.hms.controller;
 
+import com.damian.hms.dto.LoginDetails_DTO;
 import com.damian.hms.service.impl.LoginDetailsServiceImpl;
 import com.damian.hms.service.util.ServiceFactory;
 import com.damian.hms.service.util.ServiceTypes;
 import com.damian.hms.util.Animator;
+import com.damian.hms.util.GetAlert;
 import com.damian.hms.util.NavigateTypes;
 import com.damian.hms.util.Navigator;
 import com.jfoenix.controls.JFXButton;
@@ -13,6 +15,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -20,6 +23,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -80,21 +84,20 @@ public class HomeScreenController implements Initializable {
 
     public void loginOnAction(ActionEvent actionEvent) {
         LoginDetailsServiceImpl ls = ServiceFactory.getService(ServiceTypes.LoginDetailsService);
-     /*   boolean add = ls.add(new LoginDetails_DTO("U001",t1.getText(), t2.getText()));
+      /*  boolean add = ls.add(new LoginDetails_DTO("U001",t1.getText(), t2.getText()));
         if (add) {
             GetAlert.getInstance().showAlert("Login Success!", Alert.AlertType.INFORMATION);
         } else {
             GetAlert.getInstance().showAlert("Login Failed!", Alert.AlertType.ERROR);
         }*/
 
-/*
         Optional<LoginDetails_DTO> ld = ls.search("U001");
         if (ld.get().getUserName().equals(t1.getText()) && ld.get().getPassword().equals(t2.getText())) {
             Navigator.navigate((Stage) t2.getScene().getWindow(), NavigateTypes.DASHBOARD);
         } else {
             GetAlert.getInstance().showAlert("Invalid Credentials!", Alert.AlertType.ERROR);
-        }*/
-        Navigator.navigate((Stage) t2.getScene().getWindow(), NavigateTypes.DASHBOARD);
+        }
+
 
     }
 

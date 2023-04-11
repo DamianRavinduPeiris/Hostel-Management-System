@@ -43,10 +43,11 @@ public class ReservationManagerController implements Initializable {
     public JFXComboBox ridCb;
     public JFXComboBox pCb;
     public String[] paymentStatus = {"Paid.", "Not Paid."};
+    public JFXButton update;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Node[] nodes = new Node[]{l1, t1, add, clear, dor, l3, idCb, l2, ridCb, pCb};
+        Node[] nodes = new Node[]{l1, t1, add, clear, dor, l3, idCb, l2, ridCb, pCb,update};
         for (Node node : nodes) {
             Animator.getInstance().setJackInTheBox(node);
         }
@@ -69,6 +70,17 @@ public class ReservationManagerController implements Initializable {
 
 
     public void t1OnAction(ActionEvent actionEvent) {
+
+        ReservationServiceImpl rs = (ReservationServiceImpl) ServiceFactory.getService(ServiceTypes.ReservationService);
+        Optional<Reservation_DTO> re = rs.search(t1.getText());
+        if(re.isPresent()){
+            idCb.setValue(re.get().getStudent_id());
+            ridCb.setValue(re.get().getRoom_id());
+            pCb.setValue(re.get().getPayment_status());
+            dor.setValue(re.get().getDate().toLocalDate());
+        }else{
+            GetAlert.getInstance().showAlert("Reservation not found!", Alert.AlertType.ERROR);
+        }
     }
 
     public void addOnAction(ActionEvent actionEvent) {
@@ -84,8 +96,6 @@ public class ReservationManagerController implements Initializable {
         if(b1){
             RoomDetailsServiceImpl roomDetailsService = (RoomDetailsServiceImpl) ServiceFactory.getService(ServiceTypes.RoomDetailsService);
             Optional<Room_DTO> room1 = roomDetailsService.search(ridCb.getValue().toString());
-            System.out.println(ridCb.getValue().toString());
-            System.out.println(room1.get().getQty());
             room1.get().setQty(room1.get().getQty() - 1);
             boolean b2 = roomDetailsService.update(room1.get());
             if(b2){
@@ -107,4 +117,18 @@ public class ReservationManagerController implements Initializable {
     }
 
 
+    public void updateOnAction(ActionEvent actionEvent) {
+        StudentServiceImpl ss = (StudentServiceImpl) ServiceFactory.getService(ServiceTypes.StudentService);
+        Optional<Student_DTO> student = ss.search(idCb.getValue().toString());
+
+        RoomDetailsServiceImpl rs = (RoomDetailsServiceImpl) ServiceFactory.getService(ServiceTypes.RoomDetailsService);
+        Optional<Room_DTO> room = rs.search(ridCb.getValue().toString());
+
+
+        ReservationServiceImpl res = (ReservationServiceImpl) ServiceFactory.getService(ServiceTypes.ReservationService);
+        boolean b1 = res.update(new Reservation_DTO(t1.getText(), Date.valueOf(dor.getValue()), Convertor.toStudent(student.get()), ridCb.getValue().toString(), pCb.getValue().toString(), Convertor.toRoom(room.get())));
+        if (b1) {
+            GetAlert.getInstance().showAlert("Reservation successfully updated!", Alert.AlertType.INFORMATION);
+        }
+    }
 }

@@ -26,11 +26,16 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public boolean update(Reservation_DTO reservationDto) {
-        return false;
+        ReservationDAOIMPL dao = (ReservationDAOIMPL) DaoFactory.getDao(DaoTypes.ReservationDAO);
+        return dao.update(Convertor.toReservation(reservationDto));
     }
 
     @Override
     public Optional<Reservation_DTO> search(String s) {
+        ReservationDAOIMPL dao = (ReservationDAOIMPL) DaoFactory.getDao(DaoTypes.ReservationDAO);
+        if(dao.search(s).isPresent()){
+            return Optional.of(Convertor.toReservationDto(dao.search(s).get()));
+        }
 
         return Optional.empty();
     }
