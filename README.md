@@ -1,7 +1,7 @@
 
 
-## 🏠 Hostel Management System.<br>
-### *This is a hostel management system written in Java and JavaFX, which shows the implementation of <a href="https://hibernate.org" target=_blank>Hibernate</a> and layered architecture.*<br>
+## 🏠 ` Hostel Management System.`<br>
+### *This is a hostel management system written in `Java` and `JavaFX`, which shows the implementation of <a href="https://hibernate.org" target=_blank>`Hibernate`</a> and `layered architecture.`*<br>
 
 #### ✏️ You can find the requirments <a href="https://drive.google.com/file/d/1fye1EKQVQsSnnd7m0utMG2MGf7JZUBuq/view" target=_blank>here.</a><br>
 
