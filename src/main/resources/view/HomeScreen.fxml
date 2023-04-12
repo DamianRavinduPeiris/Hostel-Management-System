@@ -10,17 +10,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.damian.hms.controller.HomeScreenController">
    <children>
-      <ImageView fx:id="i1" fitHeight="596.0" fitWidth="935.0" layoutX="147.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="i1" fitHeight="596.0" fitWidth="935.0" layoutX="63.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="l1" layoutX="334.0" layoutY="86.0" prefHeight="70.0" prefWidth="577.0" text="WELCOME BACK :)" underline="true">
+      <Label fx:id="l1" layoutX="301.0" layoutY="601.0" prefHeight="117.0" prefWidth="572.0" text="WELCOME BACK :)">
          <font>
-            <Font name="Britannic Bold" size="69.0" />
+            <Font name="Berlin Sans FB" size="69.0" />
          </font>
       </Label>
       <JFXTextField fx:id="t1" focusColor="#000925" layoutX="1193.0" layoutY="353.0" onAction="#t1OnAction" prefHeight="62.0" prefWidth="519.0" promptText="Enter username here." unFocusColor="BLACK">
@@ -38,7 +37,7 @@
             <Font name="System Bold Italic" size="23.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="lb" buttonType="RAISED" layoutX="1207.0" layoutY="654.0" onAction="#loginOnAction" prefHeight="31.0" prefWidth="460.0" style="-fx-background-color: lightgreen;" text="LOGIN." textFill="#250202">
+      <JFXButton fx:id="lb" buttonType="RAISED" layoutX="1207.0" layoutY="635.0" onAction="#loginOnAction" prefHeight="50.0" prefWidth="460.0" style="-fx-background-color: lightgreen;" text="LOGIN." textFill="#250202">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
@@ -48,7 +47,7 @@
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </JFXCheckBox>
-      <Label fx:id="l2" layoutX="1096.0" layoutY="204.0" prefHeight="70.0" prefWidth="729.0" text="ADMINISTRATOR LOGIN." underline="true">
+      <Label fx:id="l2" layoutX="1096.0" layoutY="204.0" prefHeight="70.0" prefWidth="729.0" style="-fx-background-color: lightyellow;" text="ADMINISTRATOR LOGIN." underline="true">
          <font>
             <Font name="Britannic Bold" size="69.0" />
          </font>
