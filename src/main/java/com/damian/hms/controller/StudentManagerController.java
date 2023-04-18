@@ -46,7 +46,7 @@ public class StudentManagerController implements Initializable {
     public Label l1;
     public JFXComboBox cb;
     public JFXTextField t1;
-    public String[] optionsArray = {"Add a student.", "Update a student.", "Delete a student."};
+    public String[] optionsArray = {"Add a student.", "Update a student.", "Delete a student.","Search a student."};
     public String[] genderArray = {"Male.", "Female."};
     public Label t5;
     public DatePicker dor;
@@ -78,21 +78,22 @@ public class StudentManagerController implements Initializable {
     }
 
     public void cbOnAction(ActionEvent actionEvent) {
-        if (cb.getValue().equals(optionsArray[0])) {
+        System.out.println(cb.getValue().toString());
+        if (cb.getValue().toString().equals(optionsArray[0])) {
             add.setVisible(true);
-            Animator.setJackInTheBox(add);
+            Animator.getInstance().setJackInTheBox(add);
         } else {
             add.setVisible(false);
         }
-        if (cb.getValue().equals(optionsArray[1])) {
+        if (cb.getValue().toString().equals(optionsArray[1])) {
             update.setVisible(true);
-            Animator.setJackInTheBox(update);
+            Animator.getInstance().setJackInTheBox(update);
         } else {
             update.setVisible(false);
         }
-        if (cb.getValue().equals(optionsArray[2])) {
+        if (cb.getValue().toString().equals(optionsArray[2])) {
             delete.setVisible(true);
-            Animator.setJackInTheBox(delete);
+            Animator.getInstance().setJackInTheBox(delete);
         } else {
             delete.setVisible(false);
         }
@@ -117,16 +118,26 @@ public class StudentManagerController implements Initializable {
     public void deleteOnAction(ActionEvent actionEvent) {
         ReservationServiceImpl rs = ServiceFactory.getService(ServiceTypes.ReservationService);
         String roomId = rs.getRoomId(t1.getText());
-        RoomDetailsServiceImpl rds = ServiceFactory.getService(ServiceTypes.RoomDetailsService);
-        Optional<Room_DTO> room = rds.search(roomId);
-        room.get().setQty(room.get().getQty() + 1);
-        boolean b1 = rds.update(room.get());
-        if (b1) {
+        if (roomId==null) {
             StudentServiceImpl ss = ServiceFactory.getService(ServiceTypes.StudentService);
             boolean b2 = ss.delete(t1.getText());
             if (b2) {
                 GetAlert.getInstance().showAlert("Student Successfully deleted! ", Alert.AlertType.INFORMATION);
             }
+
+        } else {
+            RoomDetailsServiceImpl rds = ServiceFactory.getService(ServiceTypes.RoomDetailsService);
+            Optional<Room_DTO> room = rds.search(roomId);
+            room.get().setQty(room.get().getQty() + 1);
+            boolean b1 = rds.update(room.get());
+            if (b1) {
+                StudentServiceImpl ss = ServiceFactory.getService(ServiceTypes.StudentService);
+                boolean b2 = ss.delete(t1.getText());
+                if (b2) {
+                    GetAlert.getInstance().showAlert("Student Successfully deleted! ", Alert.AlertType.INFORMATION);
+                }
+            }
+
         }
 
 

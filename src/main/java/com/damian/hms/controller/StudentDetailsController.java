@@ -96,10 +96,17 @@ public class StudentDetailsController implements Initializable {
         ReservationServiceImpl rs = ServiceFactory.getService(ServiceTypes.ReservationService);
         ArrayList<Student_DTO> students = rs.nkmStudents();
         ObservableList<StudentTM> studentTMS = FXCollections.observableArrayList();
-        for (Student_DTO sd : students) {
-            studentTMS.add(Convertor.toStudentTM(sd));
+        if(students.isEmpty()){
+            GetAlert.getInstance().showAlert("No students yet!", Alert.AlertType.INFORMATION);
+        }else{
+            for (Student_DTO sd : students) {
+                studentTMS.add(Convertor.toStudentTM(sd));
+            }
+            tableView.setItems(studentTMS);
+
+
         }
-        tableView.setItems(studentTMS);
+
 
 
     }
