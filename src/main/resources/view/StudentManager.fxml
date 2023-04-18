@@ -72,5 +72,10 @@
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
+      <JFXButton fx:id="search" buttonType="RAISED" layoutX="604.0" layoutY="662.0" onAction="#searchOnAction" prefHeight="31.0" prefWidth="217.0" style="-fx-background-color: lightgreen;" text="SEARCH.">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
     </children>
 </AnchorPane>

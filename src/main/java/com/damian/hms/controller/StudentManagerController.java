@@ -55,10 +55,11 @@ public class StudentManagerController implements Initializable {
     public Label l2;
     public JFXComboBox ridCb;
     public JFXComboBox pCb;
+    public JFXButton search;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        JFXButton[] buttons = {add, update, delete};
+        JFXButton[] buttons = {add, update, delete,search};
         for (JFXButton b : buttons) {
             b.setVisible(false);
         }
@@ -91,11 +92,19 @@ public class StudentManagerController implements Initializable {
         } else {
             update.setVisible(false);
         }
+
         if (cb.getValue().toString().equals(optionsArray[2])) {
             delete.setVisible(true);
             Animator.getInstance().setJackInTheBox(delete);
         } else {
             delete.setVisible(false);
+        }
+        if(cb.getValue().toString().equals(optionsArray[3])){
+            search.setVisible(true);
+            Animator.getInstance().setJackInTheBox(search);
+
+        }else{
+            search.setVisible(false);
         }
     }
 
@@ -185,4 +194,7 @@ public class StudentManagerController implements Initializable {
     }
 
 
+    public void searchOnAction(ActionEvent actionEvent) {
+        t1OnAction(actionEvent);
+    }
 }

@@ -82,11 +82,6 @@ public class StudentDetailsController implements Initializable {
                 tableView.setItems(students);
             }
         }
-        //If the combobox value is changed remove the previous table data
-       /* ridCb.valueProperty().addListener((observable, oldValue, newValue) -> {
-            tableView.getItems().clear();
-            tableView.setItems(students);
-        });*/
 
     }
 

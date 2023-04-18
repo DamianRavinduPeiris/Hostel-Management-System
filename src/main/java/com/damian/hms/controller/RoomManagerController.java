@@ -25,6 +25,8 @@ import java.util.Collections;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import static com.damian.hms.util.Animator.setJackInTheBox;
+
 public class RoomManagerController implements Initializable {
     public AnchorPane ap;
     public Label l1;
@@ -38,8 +40,9 @@ public class RoomManagerController implements Initializable {
     public JFXButton add;
     public JFXButton clear;
 
-    private final String[] optionsArray = {"Add a room.", "Update a room.", "Delete a room."};
+    private final String[] optionsArray = {"Add a room.", "Update a room.", "Delete a room.","Search rooms."};
     public Label t5;
+    public JFXButton search;
 
 
     @Override
@@ -50,9 +53,10 @@ public class RoomManagerController implements Initializable {
 
 
         cb.setItems(optionsList);
-        add.setVisible(false);
-        update.setVisible(false);
-        delete.setVisible(false);
+        JFXButton[] buttons = {add, update, delete,search};
+        for (JFXButton b : buttons) {
+            b.setVisible(false);
+        }
 
         Node[] nodes = {l1, cb, t1, t2, t3, t4,t5, clear};
         for (Node n : nodes) {
@@ -78,21 +82,27 @@ public class RoomManagerController implements Initializable {
     public void cbOnAction(ActionEvent actionEvent) {
         if (cb.getValue().equals(optionsArray[0])) {
             add.setVisible(true);
-            Animator.setJackInTheBox(add);
+            Animator.getInstance().setJackInTheBox(add);
         } else {
             add.setVisible(false);
         }
         if (cb.getValue().equals(optionsArray[1])) {
             update.setVisible(true);
-            Animator.setJackInTheBox(update);
+            Animator.getInstance().setJackInTheBox(update);
         } else {
             update.setVisible(false);
         }
         if (cb.getValue().equals(optionsArray[2])) {
             delete.setVisible(true);
-            Animator.setJackInTheBox(delete);
+            Animator.getInstance().setJackInTheBox(delete);
         } else {
             delete.setVisible(false);
+        }
+        if (cb.getValue().equals(optionsArray[3])) {
+            search.setVisible(true);
+            Animator.getInstance().setJackInTheBox(search);
+        } else {
+            search.setVisible(false);
         }
 
     }
@@ -128,5 +138,9 @@ public class RoomManagerController implements Initializable {
         for (TextField t : textFields) {
             t.clear();
         }
+    }
+
+    public void searchOnAction(ActionEvent actionEvent) {
+        t1OnAction(actionEvent);
     }
 }
