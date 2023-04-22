@@ -32,7 +32,7 @@
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="t4" layoutX="770.0" layoutY="495.0" prefHeight="31.0" prefWidth="478.0" promptText="Key money. (LKR)" text="QTY.">
+      <JFXTextField fx:id="t4" layoutX="770.0" layoutY="495.0" prefHeight="31.0" prefWidth="478.0" promptText="QTY.">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
